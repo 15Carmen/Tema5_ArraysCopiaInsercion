@@ -25,11 +25,12 @@ public class ejercicio3 {
             System.out.println("Introduzca un numero: ");
             tabla[i]= sc.nextInt();
 
-            for (int j=2; j< tabla[i]/2; j++){
+            for(int j = (tabla[i] - 1); j > 1; j--){
                 if (tabla[i]%j==0){
                     esPrimo=false;
                     break;
                 }
+                esPrimo=true;
             }
 
             if (esPrimo){
@@ -48,7 +49,7 @@ public class ejercicio3 {
         if (primo >= 0) System.arraycopy(tablaPrimo, 0, tabla, 0, primo);
 
         //Metemos los impares en los huecos que quedan.
-        if (10 - primo >= 0) System.arraycopy(tablaNoPrimo, primo, tabla, primo+1, 10 - primo);
+        if (10 - primo >= 0) System.arraycopy(tablaNoPrimo, 0, tabla, primo, noPrimo);
 
         //Mostramos el resultado.
         System.out.println("Array con los numeros primos al principio:");
