@@ -15,33 +15,32 @@ public class ejercicio4 {
 
         //Declaramos las variables
         int tablaEnteros[] = new int[10];
-        int tablaSinRepes[];
+        int tablaSinRepes[] = new int[0];
+        int numeroDeElementosSinRepetir = 0;
 
-        //Declaramos el scanner para poder leer por consola
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < tablaEnteros.length; i++) {
-            System.out.println("Introduzca un numero: ");
-            tablaEnteros[i]= sc.nextInt();
+        // Leer 10 valores enteros por teclado y almacenarlos en tablaEnteros
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Ingresa un valor entero: ");
+            tablaEnteros[i] = sc.nextInt();
         }
 
-        tablaSinRepes = quitarRepes(tablaEnteros);
+        // Construir una tabla sin elementos repetidos
+        for (int i = 0; i < 10; i++) {
+            int elementoActual = tablaEnteros[i];
+            int index = Arrays.binarySearch(tablaSinRepes, elementoActual);
 
-        System.out.println("Tabla original: " + Arrays.toString(tablaEnteros));
-        System.out.println("Tabla sin numeros repetidos: " + Arrays.toString(tablaSinRepes));
-    }
-
-    public static int[] quitarRepes(int[] array) {
-        //Ordenamos el array
-        Arrays.sort(array);
-        int contador = 0;
-
-        for (int i = 0; i < array.length; i++) {        //Recorremos el array original
-            if (i == 0 || array[i] != array[i - 1]) {
-                array[contador++] = array[i];
+            if (index < 0) {
+                // El elemento no se encuentra en la tabla sin repetir
+                tablaSinRepes = Arrays.copyOf(tablaSinRepes, tablaSinRepes.length+1);
+                tablaSinRepes[numeroDeElementosSinRepetir] = elementoActual;
+                numeroDeElementosSinRepetir++;
             }
         }
-        return Arrays.copyOf(array, contador);
+
+        // Imprimir la tabla sin elementos repetidos
+        System.out.print("Tabla sin elementos repetidos: " + Arrays.toString(tablaSinRepes));
     }
 
 }

@@ -31,5 +31,8 @@ public class ejercicio1 {
         System.arraycopy(tabla, 0, tabla2, 1, tabla.length-1);
 
         System.out.println(Arrays.toString(tabla2));
+
+        //Cerramos el scanner
+        sc.close();
     }
 }
