@@ -40,7 +40,7 @@ public class Menu {
                     break;
 
                 case "3":
-                    System.out.println("Adiu");
+                    System.out.println(" Bye~Bye~");
                     salir = true;
                     break;
 
